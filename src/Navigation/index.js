@@ -24,111 +24,111 @@ const AppNavigator = createStackNavigator(
     Slider: {
       screen: Slider,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
 
     SignIn: {
       screen: SignIn,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
 
     SignUp: {
       screen: SignUp,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
 
     Home: {
-      screen: Req,
+      screen: Tovo, //Req
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     Category: {
       screen: Category,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     SubCategory: {
       screen: SubCategory,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     Search: {
       screen: Search,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     ShoppingCart: {
       screen: ShoppingCart,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     Details: {
       screen: Details,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     CheckPayment: {
       screen: CheckPayment,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     AboutUs: {
-      screen: Tovo,
+      screen: Req, // Req
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     Favorite: {
       screen: Favorite,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     HelpSupport: {
       screen: HelpSupport,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     Shops: {
       screen: Shops,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     Handicraft: {
       screen: Handicraft,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     TempPolicy: {
       screen: Home,
       navigationOptions: {
-        header: null
-      }
+        header: null,
+      },
     },
     WishList: {
       screen: WishList,
       navigationOptions: {
-        header: null
-      }
-    }
+        header: null,
+      },
+    },
   },
   {
-    initialRouteName: "Home"
+    initialRouteName: "Home",
   }
 );
 export default createAppContainer(AppNavigator);

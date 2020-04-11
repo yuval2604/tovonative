@@ -5,29 +5,29 @@ import Card from "./card";
 
 export default class Req extends Component {
   state = {
-    data: "null"
+    data: "null",
   };
 
   handleSend() {
     console.log("handleSend");
     console.log(this.state.data);
     fetch("http://167.71.44.156:3001/api/getRequests", {
-      method: "GET"
+      method: "GET",
     })
-      .then(response => response.json())
-      .then(responseJson => {
+      .then((response) => response.json())
+      .then((responseJson) => {
         this.setState({
-          data: responseJson["data"]
+          data: responseJson["data"],
         });
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }
 
   handleReq() {
     console.log("handlereq ", this.state.data);
-    var tifOptions = Object.keys(this.state.data).map(function(key) {
+    var tifOptions = Object.keys(this.state.data).map(function (key) {
       return <Card value={key}>{this.state.data[key]}</Card>;
     });
 
@@ -51,6 +51,9 @@ export default class Req extends Component {
         <Header
           onBackPress={() => this.props.navigation.navigate("TempPolicy")}
         />
+        {/* <Header
+          onBackPress={() => this.props.navigation.navigate("TempPolicy")}
+        /> */}
         <View style={{ marginHorizontal: 15 }}>
           {Object.entries(this.state.data).map((t, k) => (
             <Card key={k} data1={this.state.data[k]}></Card>
@@ -61,7 +64,7 @@ export default class Req extends Component {
               fontSize: 22,
               textAlign: "justify",
               alignSelf: "center",
-              marginBottom: 15
+              marginBottom: 15,
             }}
           >
             {/* {this.state.data[0]["name"]}

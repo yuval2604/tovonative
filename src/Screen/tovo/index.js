@@ -7,12 +7,18 @@ import {
   TextInput,
   Button,
   Linking,
-  Navigator
+  Navigator,
 } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import Header from "../../Component/Header/HeaderClose";
+import { Dropdown } from "react-native-material-dropdown";
+import Color from "../../Config/Color";
+import Style from "../Details/style";
+import TextInputView from "../../Component/TextInput/index";
+import ButtonCom from "../../Component/Button/index";
+import { Updates } from "expo";
 
-//state object
+import styleText from "../../Component/TextInput/style";
 
 export default class index extends Component {
   state = {
@@ -22,44 +28,57 @@ export default class index extends Component {
     Name: "",
     phone: "",
     email: "",
-    ID: ""
+    ID: "",
   };
 
-  handleChangespecialty = v => {
+  handleChangespecialty = (v) => {
+    console.log("h");
     this.state.specialty = v;
   };
-  handleChangeavalibility = v => {
+  handleChangeavalibility = (v) => {
     this.state.avalibility = v;
   };
-  handleChangefesition = v => {
+  handleChangefesition = (v) => {
     this.state.fesition = v;
   };
 
-  onChangeName = v => {
+  onChangeName = (v) => {
     this.state.Name = v;
   };
 
-  onChangePhone = v => {
+  onChangePhone = (v) => {
     this.state.phone = v;
   };
-  onChangeEmail = v => {
+  onChangeEmail = (v) => {
     this.state.email = v;
   };
-  onChangeID = v => {
+  onChangeID = (v) => {
     this.state.ID = v;
   };
 
-  handleChange = v => {
+  handleChange = (v) => {
     this.state.value = v;
   };
 
+  handleDelete = () => {
+    this.state = {
+      specialty: "בחר נושא",
+      avalibility: "בחר זמינות",
+      fesition: "בחר רופא",
+      Name: "",
+      phone: "",
+      email: "",
+      ID: "",
+    };
+  };
+
   handleSendPOST = () => {
-    console.log("handl POST");
+    console.log("handle POST", this.state);
     fetch("http://167.71.44.156:3001/api/getAllData", {
       method: "POST",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         avalibility: this.state.avalibility,
@@ -68,14 +87,17 @@ export default class index extends Component {
         name: this.state.Name,
         number: this.state.phone,
         email: this.state.email,
-        id: this.state.ID
-      })
+        id: this.state.ID,
+      }),
     })
-      .then(response => response.json())
-      .then(responseJson => {
+      .then((response) => response.json())
+      .then((responseJson) => {
         console.log(responseJson);
       })
-      .catch(error => {
+      .then(this.handleDelete())
+      .then(console.log(this.state))
+
+      .catch((error) => {
         console.error(error);
       });
     console.log("back");
@@ -88,19 +110,19 @@ export default class index extends Component {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: undefined
+      body: undefined,
       // JSON.stringify({
       //     firstParam: "yourValue",
       //     secondParam: "yourOtherValue"
       //   })
     })
-      .then(response => response.json())
-      .then(responseJson => {
+      .then((response) => response.json())
+      .then((responseJson) => {
         console.log(responseJson);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
     console.log("back");
@@ -109,15 +131,15 @@ export default class index extends Component {
     const pickerStyle = {
       inputIOS: {
         color: "white",
-        paddingTop: 40,
+        paddingTop: 20,
         paddingHorizontal: 40,
-        paddingBottom: 40
+        paddingBottom: 40,
       },
       inputAndroid: {
         color: "white",
         paddingTop: 40,
         paddingHorizontal: 40,
-        paddingBottom: 40
+        paddingBottom: 40,
       },
       placeholderColor: "white",
       underline: { borderTopWidth: 0 },
@@ -133,8 +155,8 @@ export default class index extends Component {
         width: 0,
         height: 0,
         top: 20,
-        right: 15
-      }
+        right: 15,
+      },
     };
 
     const styles = StyleSheet.create({
@@ -142,99 +164,143 @@ export default class index extends Component {
         flex: 1,
         backgroundColor: "#fff",
         alignItems: "center",
-        justifyContent: "center"
+        // justifyContent: "center",
+        padding: 30,
+        paddingTop: 0,
       },
       formLabel: {
-        fontSize: 20,
-        color: "#18e7d3"
+        fontSize: 40,
+        color: "#18e7d3",
       },
       inputStyle: {
-        marginTop: 20,
+        marginTop: 0,
         width: 300,
         height: 40,
         paddingHorizontal: 10,
         borderRadius: 50,
-        backgroundColor: "#ecf0f1"
+        backgroundColor: "#ecf0f1",
       },
       Picker: {
-        marginTop: "300px"
-      }
+        marginTop: "300px",
+      },
+      buttonStyle: {
+        backgroundColor: Color.blue,
+      },
     });
     return (
       <View style={styles.container}>
-        <Header onBackPress={() => this.props.navigation.navigate("Home")} />
-        <Text style={styles.formLabel}> Get Doctor</Text>
+        {/* <Header onBackPress={() => this.props.navigation.navigate("AboutUs")} /> */}
+        <Text style={styles.formLabel}> Get Doctor2</Text>
 
-        <Button
-          title="Go to the website"
+        <Dropdown
+          data={[
+            { label: "אונקולוגיה", value: "אונקולוגיה", key: "אונקולוגיה" },
+          ]}
+          baseColor={Color.blue}
+          itemColor={Color.blue}
+          selectedItemColor={Color.blue}
+          containerStyle={Style.dropdownStyle}
+          pickerStyle={Style.dropdownPicker}
+          valueExtractor={({ value }) => value}
+          placeholder={this.state.specialty}
+          onChangeText={(value) => this.handleChangespecialty(value)}
+        ></Dropdown>
+
+        <Dropdown
+          data={[
+            { label: "מיידי", value: "מיידי", key: "מיידי" },
+            { label: "בעוד כחודש", value: "בעוד כחודש", key: "בעוד כחודש" },
+            {
+              label: "בעוד כ-3 חודשים",
+              value: "בעוד כ-3 חודשים",
+              key: "בעוד כ-3 חודשים",
+            },
+            {
+              label: "בעוד כ-6 חודשים",
+              value: "בעוד כ-6 חודשים",
+              key: "בעוד כ-6 חודשים",
+            },
+            { label: "בעוד שנה", value: "בעוד שנה" },
+          ]}
+          baseColor={Color.blue}
+          itemColor={Color.blue}
+          selectedItemColor={Color.blue}
+          containerStyle={Style.dropdownStyle}
+          pickerStyle={Style.dropdownPicker}
+          valueExtractor={({ value }) => value}
+          placeholder={this.state.avalibility}
+          onChangeText={(value) => this.handleChangeavalibility(value)}
+        ></Dropdown>
+
+        <Dropdown
+          data={[
+            {
+              label: "דר נועם אסנה",
+              value: "דר נועם אסנה",
+              key: "דר נועם אסנה",
+            },
+            {
+              label: "פרופ משה שפר",
+              value: "פרופ משה שפר",
+              key: "פרופ משה שפר",
+            },
+          ]}
+          baseColor={Color.blue}
+          itemColor={Color.blue}
+          selectedItemColor={Color.blue}
+          containerStyle={Style.dropdownStyle}
+          pickerStyle={Style.dropdownPicker}
+          valueExtractor={({ value }) => value}
+          placeholder={this.state.fesition}
+          onChangeText={(value) => this.handleChangefesition(value)}
+        ></Dropdown>
+
+        <TextInput
+          key="fullname"
+          placeholder="שם מלא"
+          style={[styleText.textViewContainer, this.props.TextInputStyle]}
+          placeholderTextColor="#A0A0A0"
+          underlineColorAndroid="transparent"
+          onChangeText={(text) => this.onChangeName(text)}
+        />
+        <TextInput
+          key="phone"
+          placeholder="טלפון"
+          style={[styleText.textViewContainer, this.props.TextInputStyle]}
+          placeholderTextColor="#A0A0A0"
+          underlineColorAndroid="transparent"
+          onChangeText={(text) => this.onChangePhone(text)}
+        />
+        <TextInput
+          key="email"
+          placeholder="אימייל"
+          style={[styleText.textViewContainer, this.props.TextInputStyle]}
+          placeholderTextColor="#A0A0A0"
+          underlineColorAndroid="transparent"
+          onChangeText={(text) => this.onChangeEmail(text)}
+        />
+        <TextInput
+          key="id"
+          placeholder="תעודת זהות"
+          style={[styleText.textViewContainer, this.props.TextInputStyle]}
+          placeholderTextColor="#A0A0A0"
+          underlineColorAndroid="transparent"
+          onChangeText={(text) => this.onChangeID(text)}
+        />
+
+        <ButtonCom
+          viewStyle={{ marginTop: 15, padding: 3 }}
+          Text="SEND REQUEST1"
+          onPress={() => {
+            this.handleSendPOST();
+            Updates.reload();
+          }}
+        />
+        <ButtonCom
+          Text="Go to the website"
+          viewStyle={{ marginTop: 15, padding: 3 }}
           onPress={() => {
             Linking.openURL("http://167.71.44.156:3000/main");
-          }}
-        />
-
-        <RNPickerSelect
-          style={pickerStyle}
-          placeholder={{
-            label: this.state.specialty,
-            value: null
-          }}
-          onValueChange={value => handleChangespecialty(value)}
-          items={[{ label: "אונקולוגיה", value: "אונקולוגיה" }]}
-        />
-        <RNPickerSelect
-          style={pickerStyle}
-          placeholder={{
-            label: this.state.avalibility,
-            value: null
-          }}
-          onValueChange={value => handleChangeavalibility(value)}
-          items={[
-            { label: "מיידי", value: "מיידי" },
-            { label: "בעוד כחודש", value: "בעוד כחודש" },
-            { label: "בעוד כ-3 חודשים", value: "בעוד כ-3 חודשים" },
-            { label: "בעוד כ-6 חודשים", value: "בעוד כ-6 חודשים" },
-            { label: "בעוד שנה", value: "בעוד שנה" }
-          ]}
-        />
-
-        <RNPickerSelect
-          style={pickerStyle}
-          placeholder={{
-            label: this.state.fesition,
-            value: null
-          }}
-          value={this.state.value}
-          onValueChange={value => handleChangefesition(value)}
-          items={[
-            { label: "דר נועם אסנא", value: "דר נועם אסנא" },
-            { label: "פרופ משה שפר", value: "פרופ משה שפר" }
-          ]}
-        />
-
-        <TextInput
-          placeholder="שם מלא"
-          style={styles.inputStyle}
-          onChangeText={text => onChangeName(text)}
-        />
-        <TextInput
-          placeholder="טלפון"
-          style={styles.inputStyle}
-          onChangeText={text => onChangePhone(text)}
-        />
-        <TextInput
-          placeholder="email"
-          style={styles.inputStyle}
-          onChangeText={text => onChangeEmail(text)}
-        />
-        <TextInput
-          placeholder="תעודת זהות"
-          style={styles.inputStyle}
-          onChangeText={text => onChangeID(text)}
-        />
-        <Button
-          title="post request"
-          onPress={() => {
-            handleSendPOST();
           }}
         />
       </View>
