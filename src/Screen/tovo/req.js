@@ -48,9 +48,7 @@ export default class Req extends Component {
     console.log("render", this.state.data[0]);
     return (
       <View>
-        <Header
-          onBackPress={() => this.props.navigation.navigate("TempPolicy")}
-        />
+        <Header onBackPress={() => this.props.navigation.navigate("Home")} />
         {/* <Header
           onBackPress={() => this.props.navigation.navigate("TempPolicy")}
         /> */}
