@@ -5,7 +5,7 @@ import Color from "../../Config/Color";
 import LeftItemList from "../../Component/LeftItemList/index";
 import RightItemList from "../../Component/RightItemList/index";
 
-const Card = props => {
+const Card = (props) => {
   return (
     <View>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -24,6 +24,7 @@ const Card = props => {
             description={props.data1["number"]}
             price={props.data1["dateofevent"]}
             rate={props.data1["timeOfPatiant"]}
+            onPress={props.onPress}
           />
         </View>
       </ScrollView>

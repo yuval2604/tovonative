@@ -189,7 +189,7 @@ export default class index extends Component {
     });
     return (
       <View style={styles.container}>
-        {/* <Header onBackPress={() => this.props.navigation.navigate("AboutUs")} /> */}
+        <Header onBackPress={() => this.props.navigation.navigate("AboutUs")} />
         <Text style={styles.formLabel}> Get Doctor2</Text>
 
         <Dropdown

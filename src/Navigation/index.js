@@ -18,6 +18,7 @@ import TempPolicy from "../Screen/Temp&Policy/index";
 import WishList from "../Screen/WishList/index";
 import Tovo from "../Screen/tovo/index";
 import Req from "../Screen/tovo/req";
+import DoctorCard from "../Screen/tovo/DoctorAnswer";
 
 const AppNavigator = createStackNavigator(
   {
@@ -122,6 +123,12 @@ const AppNavigator = createStackNavigator(
     },
     WishList: {
       screen: WishList,
+      navigationOptions: {
+        header: null,
+      },
+    },
+    DoctorCard: {
+      screen: DoctorCard,
       navigationOptions: {
         header: null,
       },

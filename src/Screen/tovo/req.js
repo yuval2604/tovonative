@@ -56,7 +56,18 @@ export default class Req extends Component {
         /> */}
         <View style={{ marginHorizontal: 15 }}>
           {Object.entries(this.state.data).map((t, k) => (
-            <Card key={k} data1={this.state.data[k]}></Card>
+            <Card
+              key={k}
+              data1={this.state.data[k]}
+              onPress={() =>
+                this.props.navigation.navigate("DoctorCard", {
+                  id: this.state.data[k]["id"],
+                  name: this.state.data[k]["name"],
+                  email: this.state.data[k]["email"],
+                  number: this.state.data[k]["number"],
+                })
+              }
+            ></Card>
           ))}
           <Text
             style={{
