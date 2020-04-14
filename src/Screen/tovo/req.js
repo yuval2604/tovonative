@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, ScrollView } from "react-native";
 import Header from "../../Component/Header/HeaderClose";
 import Card from "./card";
 
@@ -48,38 +48,40 @@ export default class Req extends Component {
     console.log("render", this.state.data[0]);
     return (
       <View>
-        <Header onBackPress={() => this.props.navigation.navigate("Home")} />
-        {/* <Header
+        <ScrollView>
+          <Header onBackPress={() => this.props.navigation.navigate("Home")} />
+          {/* <Header
           onBackPress={() => this.props.navigation.navigate("TempPolicy")}
         /> */}
-        <View style={{ marginHorizontal: 15 }}>
-          {Object.entries(this.state.data).map((t, k) => (
-            <Card
-              key={k}
-              data1={this.state.data[k]}
-              onPress={() =>
-                this.props.navigation.navigate("DoctorCard", {
-                  id: this.state.data[k]["id"],
-                  name: this.state.data[k]["name"],
-                  email: this.state.data[k]["email"],
-                  number: this.state.data[k]["number"],
-                })
-              }
-            ></Card>
-          ))}
-          <Text
-            style={{
-              fontFamily: "OS_SB",
-              fontSize: 22,
-              textAlign: "justify",
-              alignSelf: "center",
-              marginBottom: 15,
-            }}
-          >
-            {/* {this.state.data[0]["name"]}
+          <View style={{ marginHorizontal: 15 }}>
+            {Object.entries(this.state.data).map((t, k) => (
+              <Card
+                key={k}
+                data1={this.state.data[k]}
+                onPress={() =>
+                  this.props.navigation.navigate("DoctorCard", {
+                    id: this.state.data[k]["id"],
+                    name: this.state.data[k]["name"],
+                    email: this.state.data[k]["email"],
+                    number: this.state.data[k]["number"],
+                  })
+                }
+              ></Card>
+            ))}
+            <Text
+              style={{
+                fontFamily: "OS_SB",
+                fontSize: 22,
+                textAlign: "justify",
+                alignSelf: "center",
+                marginBottom: 15,
+              }}
+            >
+              {/* {this.state.data[0]["name"]}
             {this.state.data[0]["number"]} */}
-          </Text>
-        </View>
+            </Text>
+          </View>
+        </ScrollView>
       </View>
     );
   }

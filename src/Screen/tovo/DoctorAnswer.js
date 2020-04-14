@@ -1,10 +1,12 @@
-import React, { Component } from "react";
-import { Text, View, TextInput } from "react-native";
+import React, { Component, useState } from "react";
+import { Text, View, TextInput, Button, Platform } from "react-native";
 import Header from "../../Component/Header/HeaderClose";
 import TwoRowText from "../../Component/TwoRowText/index";
 import styleText from "../../Component/TextInput/style";
 import ButtonCom from "../../Component/Button/index";
+import ClockTime from "../../Component/Clock/Clock";
 import { Updates } from "expo";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export default class DoctorCard extends Component {
   state = {
@@ -89,6 +91,7 @@ export default class DoctorCard extends Component {
           Title="number"
           Price={this.props["navigation"]["state"]["params"]["number"]}
         />
+        <ClockTime />
 
         <TextInput
           key="Date"

@@ -9,6 +9,7 @@ import {
   Linking,
   Navigator,
   Vibration,
+  ScrollView,
 } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import Header from "../../Component/Header/HeaderClose";
@@ -263,127 +264,131 @@ export default class index extends Component {
       buttonStyle: {
         backgroundColor: Color.blue,
       },
+      scrollView: {},
     });
     return (
       <View style={styles.container}>
-        <Header onBackPress={() => this.props.navigation.navigate("AboutUs")} />
-        <Text style={styles.formLabel}> Get Doctor2</Text>
+        <ScrollView style={styles.scrollView}>
+          <Header
+            onBackPress={() => this.props.navigation.navigate("AboutUs")}
+          />
+          <Text style={styles.formLabel}> Get Doctor2</Text>
 
-        <Dropdown
-          data={[
-            { label: "אונקולוגיה", value: "אונקולוגיה", key: "אונקולוגיה" },
-          ]}
-          baseColor={Color.blue}
-          itemColor={Color.blue}
-          selectedItemColor={Color.blue}
-          containerStyle={Style.dropdownStyle}
-          pickerStyle={Style.dropdownPicker}
-          valueExtractor={({ value }) => value}
-          placeholder={this.state.specialty}
-          onChangeText={(value) => this.handleChangespecialty(value)}
-        ></Dropdown>
+          <Dropdown
+            data={[
+              { label: "אונקולוגיה", value: "אונקולוגיה", key: "אונקולוגיה" },
+            ]}
+            baseColor={Color.blue}
+            itemColor={Color.blue}
+            selectedItemColor={Color.blue}
+            containerStyle={Style.dropdownStyle}
+            pickerStyle={Style.dropdownPicker}
+            valueExtractor={({ value }) => value}
+            placeholder={this.state.specialty}
+            onChangeText={(value) => this.handleChangespecialty(value)}
+          ></Dropdown>
 
-        <Dropdown
-          data={[
-            { label: "מיידי", value: "מיידי", key: "מיידי" },
-            { label: "בעוד כחודש", value: "בעוד כחודש", key: "בעוד כחודש" },
-            {
-              label: "בעוד כ-3 חודשים",
-              value: "בעוד כ-3 חודשים",
-              key: "בעוד כ-3 חודשים",
-            },
-            {
-              label: "בעוד כ-6 חודשים",
-              value: "בעוד כ-6 חודשים",
-              key: "בעוד כ-6 חודשים",
-            },
-            { label: "בעוד שנה", value: "בעוד שנה" },
-          ]}
-          baseColor={Color.blue}
-          itemColor={Color.blue}
-          selectedItemColor={Color.blue}
-          containerStyle={Style.dropdownStyle}
-          pickerStyle={Style.dropdownPicker}
-          valueExtractor={({ value }) => value}
-          placeholder={this.state.avalibility}
-          onChangeText={(value) => this.handleChangeavalibility(value)}
-        ></Dropdown>
+          <Dropdown
+            data={[
+              { label: "מיידי", value: "מיידי", key: "מיידי" },
+              { label: "בעוד כחודש", value: "בעוד כחודש", key: "בעוד כחודש" },
+              {
+                label: "בעוד כ-3 חודשים",
+                value: "בעוד כ-3 חודשים",
+                key: "בעוד כ-3 חודשים",
+              },
+              {
+                label: "בעוד כ-6 חודשים",
+                value: "בעוד כ-6 חודשים",
+                key: "בעוד כ-6 חודשים",
+              },
+              { label: "בעוד שנה", value: "בעוד שנה" },
+            ]}
+            baseColor={Color.blue}
+            itemColor={Color.blue}
+            selectedItemColor={Color.blue}
+            containerStyle={Style.dropdownStyle}
+            pickerStyle={Style.dropdownPicker}
+            valueExtractor={({ value }) => value}
+            placeholder={this.state.avalibility}
+            onChangeText={(value) => this.handleChangeavalibility(value)}
+          ></Dropdown>
 
-        <Dropdown
-          data={[
-            {
-              label: "דר נועם אסנה",
-              value: "דר נועם אסנה",
-              key: "דר נועם אסנה",
-            },
-            {
-              label: "פרופ משה שפר",
-              value: "פרופ משה שפר",
-              key: "פרופ משה שפר",
-            },
-          ]}
-          baseColor={Color.blue}
-          itemColor={Color.blue}
-          selectedItemColor={Color.blue}
-          containerStyle={Style.dropdownStyle}
-          pickerStyle={Style.dropdownPicker}
-          valueExtractor={({ value }) => value}
-          placeholder={this.state.fesition}
-          onChangeText={(value) => this.handleChangefesition(value)}
-        ></Dropdown>
+          <Dropdown
+            data={[
+              {
+                label: "דר נועם אסנה",
+                value: "דר נועם אסנה",
+                key: "דר נועם אסנה",
+              },
+              {
+                label: "פרופ משה שפר",
+                value: "פרופ משה שפר",
+                key: "פרופ משה שפר",
+              },
+            ]}
+            baseColor={Color.blue}
+            itemColor={Color.blue}
+            selectedItemColor={Color.blue}
+            containerStyle={Style.dropdownStyle}
+            pickerStyle={Style.dropdownPicker}
+            valueExtractor={({ value }) => value}
+            placeholder={this.state.fesition}
+            onChangeText={(value) => this.handleChangefesition(value)}
+          ></Dropdown>
 
-        <TextInput
-          key="fullname"
-          placeholder="שם מלא"
-          style={[styleText.textViewContainer, this.props.TextInputStyle]}
-          placeholderTextColor="#A0A0A0"
-          underlineColorAndroid="transparent"
-          onChangeText={(text) => this.onChangeName(text)}
-        />
-        <TextInput
-          key="phone"
-          placeholder="טלפון"
-          style={[styleText.textViewContainer, this.props.TextInputStyle]}
-          placeholderTextColor="#A0A0A0"
-          underlineColorAndroid="transparent"
-          onChangeText={(text) => this.onChangePhone(text)}
-        />
-        <TextInput
-          key="email"
-          placeholder="אימייל"
-          style={[styleText.textViewContainer, this.props.TextInputStyle]}
-          placeholderTextColor="#A0A0A0"
-          underlineColorAndroid="transparent"
-          onChangeText={(text) => this.onChangeEmail(text)}
-        />
-        <TextInput
-          key="id"
-          placeholder="תעודת זהות"
-          style={[styleText.textViewContainer, this.props.TextInputStyle]}
-          placeholderTextColor="#A0A0A0"
-          underlineColorAndroid="transparent"
-          onChangeText={(text) => this.onChangeID(text)}
-        />
+          <TextInput
+            key="fullname"
+            placeholder="שם מלא"
+            style={[styleText.textViewContainer, this.props.TextInputStyle]}
+            placeholderTextColor="#A0A0A0"
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => this.onChangeName(text)}
+          />
+          <TextInput
+            key="phone"
+            placeholder="טלפון"
+            style={[styleText.textViewContainer, this.props.TextInputStyle]}
+            placeholderTextColor="#A0A0A0"
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => this.onChangePhone(text)}
+          />
+          <TextInput
+            key="email"
+            placeholder="אימייל"
+            style={[styleText.textViewContainer, this.props.TextInputStyle]}
+            placeholderTextColor="#A0A0A0"
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => this.onChangeEmail(text)}
+          />
+          <TextInput
+            key="id"
+            placeholder="תעודת זהות"
+            style={[styleText.textViewContainer, this.props.TextInputStyle]}
+            placeholderTextColor="#A0A0A0"
+            underlineColorAndroid="transparent"
+            onChangeText={(text) => this.onChangeID(text)}
+          />
 
-        <ButtonCom
-          viewStyle={{ marginTop: 15, padding: 3 }}
-          Text="SEND REQUEST1"
-          onPress={() => {
-            this.handleSendPOST();
-            title = "New Request";
-            body = "New request from" + this.state.Name;
-            this.sendPushNotification(title, body); //Only for doctors
-            Updates.reload();
-          }}
-        />
-        <ButtonCom
-          Text="Go to the website"
-          viewStyle={{ marginTop: 15, padding: 3 }}
-          onPress={() => {
-            Linking.openURL("http://167.71.44.156:3000/main");
-          }}
-        />
-        <Button
+          <ButtonCom
+            viewStyle={{ marginTop: 15, padding: 3 }}
+            Text="SEND REQUEST1"
+            onPress={() => {
+              this.handleSendPOST();
+              title = "New Request";
+              body = "New request from" + this.state.Name;
+              this.sendPushNotification(title, body); //Only for doctors
+              Updates.reload();
+            }}
+          />
+          <ButtonCom
+            Text="Go to the website"
+            viewStyle={{ marginTop: 15, padding: 3 }}
+            onPress={() => {
+              Linking.openURL("http://167.71.44.156:3000/main");
+            }}
+          />
+          {/* <Button
           title={"Press to Send Notification"}
           onPress={() =>
             this.sendPushNotification(
@@ -391,7 +396,8 @@ export default class index extends Component {
               "New request from" + this.state.Name
             )
           }
-        />
+        /> */}
+        </ScrollView>
       </View>
     );
   }
