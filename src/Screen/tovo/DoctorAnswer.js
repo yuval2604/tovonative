@@ -6,12 +6,13 @@ import styleText from "../../Component/TextInput/style";
 import ButtonCom from "../../Component/Button/index";
 import ClockTime from "../../Component/Clock/Clock";
 import { Updates } from "expo";
-import DateTimePickerModal from "react-native-modal-datetime-picker";
+
+import DatePicker from "react-native-datepicker";
 
 export default class DoctorCard extends Component {
   state = {
-    Time: "",
-    Date: "",
+    Time: "00:00",
+    Date: "2020-01-01",
   };
 
   handleSend() {
@@ -91,24 +92,78 @@ export default class DoctorCard extends Component {
           Title="number"
           Price={this.props["navigation"]["state"]["params"]["number"]}
         />
-        <ClockTime />
 
-        <TextInput
+        <DatePicker
+          style={{ width: 200 }}
+          date={this.state.Date}
+          mode="date"
+          placeholder="select date"
+          format="YYYY-MM-DD"
+          minDate="2020-01-01"
+          maxDate="2022-06-01"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: "absolute",
+              left: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              marginLeft: 36,
+            },
+            // ... You can check the source to find the other keys.
+          }}
+          onDateChange={(date) => {
+            this.setState({ Date: date });
+          }}
+        />
+
+        {/* <TextInput
           key="Date"
           placeholder="בחר תאריך"
           style={[styleText.textViewContainer, this.props.TextInputStyle]}
           placeholderTextColor="#A0A0A0"
           underlineColorAndroid="transparent"
           onChangeText={(text) => this.handleChangeTime(text)}
+        /> */}
+
+        <DatePicker
+          style={{ width: 200 }}
+          date={this.state.Time}
+          mode="time"
+          placeholder="select time"
+          format="HH:mm"
+          minDate="00:00"
+          maxDate="23:59"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: "absolute",
+              left: 0,
+              top: 4,
+              marginLeft: 0,
+            },
+            dateInput: {
+              marginLeft: 36,
+            },
+            // ... You can check the source to find the other keys.
+          }}
+          onDateChange={(time) => {
+            this.setState({ Time: time });
+          }}
         />
-        <TextInput
+
+        {/*   <TextInput
           key="Time"
           placeholder="בחר זמן"
           style={[styleText.textViewContainer, this.props.TextInputStyle]}
           placeholderTextColor="#A0A0A0"
           underlineColorAndroid="transparent"
           onChangeText={(text) => this.handleChangeDate(text)}
-        />
+           /> */}
 
         <ButtonCom
           viewStyle={{ marginTop: 15, padding: 3 }}
