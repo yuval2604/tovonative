@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Get Doctor Side",
+    "slug": "Doctor",
+    "privacy": "public",
+    "sdkVersion": "34.0.0",
+    "platforms": ["ios", "android", "web"],
+    "ios": {
+      "bundleIdentifier": "com.itechnotion.harrier",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.itechnotion.harrier",
+      "versionCode": 1,
+      "icon": "./assets/logo2.png"
+    },
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/logo2.png",
+    "splash": {
+      "image": "./assets/logo2c.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#3D3BEE"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"]
+  }
+}
