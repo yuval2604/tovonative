@@ -16,7 +16,7 @@ import Shops from "../Screen/Shops/index";
 import Handicraft from "../Screen/TabScreenPage/Handicraft/index";
 import TempPolicy from "../Screen/Temp&Policy/index";
 import WishList from "../Screen/WishList/index";
-import Tovo from "../Screen/tovo/index";
+import Tovo from "../Screen/tovo/index2";
 import Req from "../Screen/tovo/req";
 import DoctorCard from "../Screen/tovo/DoctorAnswer";
 

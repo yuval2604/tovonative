@@ -22,7 +22,6 @@ import ButtonCom from "../../Component/Button/index";
 import Expo, { Notifications, Updates } from "expo";
 import Constants from "expo-constants";
 import styleText from "../../Component/TextInput/style";
-import * as Permissions from "expo-permissions";
 import Imgback from "../../../assets/background.png";
 
 export default class index extends Component {
@@ -34,8 +33,27 @@ export default class index extends Component {
     phone: "",
     email: "",
     ID: "",
-    expoPushToken: "",
-    notification: {},
+  };
+
+  // Can use this function below, OR use Expo's Push Notification Tool-> https://expo.io/dashboard/notifications
+  sendPushNotification = async (title, body) => {
+    const message = {
+      to: this.state.expoPushToken,
+      sound: "default",
+      title: title,
+      body: body,
+      data: { data: "goes here" },
+      _displayInForeground: true,
+    };
+    const response = await fetch("https://exp.host/--/api/v2/push/send", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Accept-encoding": "gzip, deflate",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
   };
 
   handleChangespecialty = (v) => {
@@ -211,7 +229,7 @@ export default class index extends Component {
         <ImageBackground source={Imgback} style={styles.image}>
           <ScrollView style={styles.scrollView}>
             <Header
-              onBackPress={() => this.props.navigation.navigate("TempPolicy")}
+              onBackPress={() => this.props.navigation.navigate("AboutUs")}
             />
             <Text style={styles.formLabel}> Get Doctor </Text>
 
