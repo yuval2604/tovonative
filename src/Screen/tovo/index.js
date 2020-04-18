@@ -211,7 +211,7 @@ export default class index extends Component {
         <ImageBackground source={Imgback} style={styles.image}>
           <ScrollView style={styles.scrollView}>
             <Header
-              onBackPress={() => this.props.navigation.navigate("AboutUs")}
+              onBackPress={() => this.props.navigation.navigate("TempPolicy")}
             />
             <Text style={styles.formLabel}> Get Doctor </Text>
 
