@@ -1,15 +1,5 @@
 # tovonative
 
-TempPolicy: {
-screen: Req, // now Home need to be TempPolicy
-navigationOptions: {
-header: null
-}
-},
-
-Home: {
-screen: Home, // now Req
-navigationOptions: {
-header: null
-}
-},
+add color to dropdown
+add background IMG
+add img to assets/background.png
