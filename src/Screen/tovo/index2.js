@@ -314,6 +314,14 @@ export default class componentName extends Component {
             {this.onThirdSteps()}
           </ProgressStep> */}
           </ProgressSteps>
+          <ButtonCom
+            Text="Go to the website"
+            viewStyle={{ marginTop: 15, padding: 3 }}
+            onPress={() => {
+              console.log(this.state);
+              Linking.openURL("http://167.71.44.156:3000/main");
+            }}
+          />
         </ImageBackground>
       </View>
     );
@@ -341,6 +349,7 @@ export default class componentName extends Component {
         <Dropdown
           data={[
             { label: "מיידי", value: "מיידי", key: "מיידי" },
+            { label: "תוך שבוע", value: "תוך שבוע", key: "תוך שבוע" },
             { label: "בעוד כחודש", value: "בעוד כחודש", key: "בעוד כחודש" },
             {
               label: "בעוד כ-3 חודשים",
@@ -427,7 +436,7 @@ export default class componentName extends Component {
           onChangeText={(text) => this.onChangeID(text)}
         />
 
-        <ButtonCom
+        {/* <ButtonCom
           viewStyle={{ marginTop: 15, padding: 3 }}
           Text="SEND REQUEST1"
           onPress={() => {
@@ -437,15 +446,7 @@ export default class componentName extends Component {
             this.sendPushNotification(title, body); //Only for doctors
             Updates.reload();
           }}
-        />
-        <ButtonCom
-          Text="Go to the website"
-          viewStyle={{ marginTop: 15, padding: 3 }}
-          onPress={() => {
-            console.log(this.state);
-            Linking.openURL("http://167.71.44.156:3000/main");
-          }}
-        />
+        /> */}
       </View>
     );
   }

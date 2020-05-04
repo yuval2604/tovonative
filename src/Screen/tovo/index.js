@@ -251,6 +251,7 @@ export default class index extends Component {
             <Dropdown
               data={[
                 { label: "מיידי", value: "מיידי", key: "מיידי" },
+                { label: "תוך שבוע", value: "תוך שבוע", key: "תוך שבוע" },
                 { label: "בעוד כחודש", value: "בעוד כחודש", key: "בעוד כחודש" },
                 {
                   label: "בעוד כ-3 חודשים",
